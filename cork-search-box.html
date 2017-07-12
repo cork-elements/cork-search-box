@@ -1,0 +1,109 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+
+<dom-module id="cork-search-box">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      #root {
+        display: flex;
+        align-items: center;
+      }
+
+      input {
+        flex: 1;
+        height: 43px;
+        font-size: 18px;
+        border: none;
+        border-radius: 6px 0 0 6px;
+        background: white;
+        outline: none; 
+        padding: 0 5px;
+      }
+
+      #clear {
+        background: white;
+        width: 35px;
+        height: 43px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      iron-icon[icon="clear"] {
+        margin-top: 9px;
+      }
+
+      paper-button {
+        background-color: var(--cork-search-box-btn-color, #ccc);
+        border-radius: 0 6px 6px 0;
+        margin-left: 0px;
+        min-width: 50px;
+      }
+
+      [hidden] {
+        display: none;
+      }
+    </style>
+    
+    <div id="root">
+      <input id="input" type="text" on-keyup="_onChange" on-change="_onChange" />
+      <span id="clear">
+        <iron-icon icon="clear" hidden="[[!showClear]]" on-click="clear"></iron-icon>
+      </span>
+      <paper-button>
+        <iron-icon icon="search"></iron-icon>
+      </paper-button>
+    </div>
+
+  </template>
+
+  <script>
+    /**
+     * `cork-search-box`
+     * Search box
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class CorkSearchBox extends Polymer.Element {
+      static get is() { return 'cork-search-box'; }
+
+      static get properties() {
+        return {
+          showClear: {
+            type: Boolean,
+            value: false
+          }
+        };
+      }
+
+      get value() {
+        return this.$.input.value;
+      }
+
+      set value(value) {
+        this.$.input.value = value;
+        this.showClear = (value) ? true : false;
+      }
+
+      clear() {
+        this.$.input.value = '';
+        this.showClear = false;
+      }
+
+      _onChange() {
+        this.showClear = (this.$.input.value) ? true : false;
+      }
+
+    }
+
+    window.customElements.define(CorkSearchBox.is, CorkSearchBox);
+  </script>
+</dom-module>
