@@ -9,6 +9,7 @@
     <style>
       :host {
         display: block;
+        border-radius: 6px;
       }
 
       #root {
@@ -42,7 +43,7 @@
       paper-button {
         background-color: var(--cork-search-box-btn-color, #ccc);
         border-radius: 0 6px 6px 0;
-        margin-left: 0px;
+        margin: 0px;
         min-width: 50px;
       }
 
@@ -52,12 +53,12 @@
     </style>
     
     <div id="root">
-      <input id="input" type="text" on-keyup="_onChange" on-change="_onChange" />
+      <input id="input" type="text" on-keyup="_onKeyup" on-change="_onChange" />
       <span id="clear">
         <iron-icon icon="clear" hidden="[[!showClear]]" on-click="clear"></iron-icon>
       </span>
       <paper-button>
-        <iron-icon icon="search"></iron-icon>
+        <iron-icon icon="search" on-click="_fireSearch"></iron-icon>
       </paper-button>
     </div>
 
@@ -94,12 +95,22 @@
       }
 
       clear() {
+        this.dispatchEvent(new CustomEvent('clear', {}));
         this.$.input.value = '';
         this.showClear = false;
       }
 
       _onChange() {
         this.showClear = (this.$.input.value) ? true : false;
+      }
+
+      _onKeyUp(e) {
+        if( e.which === 13 ) this._fireSearch();
+        else this._onChange();
+      }
+
+      _fireSearch() {
+        this.dispatchEvent(new CustomEvent('search', {detail: {value: this.value}}));
       }
 
     }
