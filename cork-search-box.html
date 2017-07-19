@@ -96,9 +96,9 @@
       }
 
       clear() {
-        this.dispatchEvent(new CustomEvent('clear', {}));
         this.$.input.value = '';
         this.showClear = false;
+        this.dispatchEvent(new CustomEvent('clear', {}));
       }
 
       _onChange() {
