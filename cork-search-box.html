@@ -72,10 +72,18 @@
     </style>
     
     <div id="root">
-      <input id="input" type="text" on-keyup="_onKeyUp" on-change="_onChange" placeholder$="[[placeholder]]"/>
-      <span id="clear">
+      <input 
+        id="input" 
+        type="text" 
+        on-keyup="_onKeyUp" 
+        on-change="_onChange" 
+        autocomplete="off"
+        placeholder$="[[placeholder]]"/>
+      
+        <span id="clear">
         <iron-icon icon="clear" hidden="[[!showClear]]" on-click="clear"></iron-icon>
       </span>
+      
       <paper-button>
         <iron-icon icon="search" on-click="_fireSearch"></iron-icon>
       </paper-button>
