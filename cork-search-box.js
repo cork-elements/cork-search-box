@@ -1,6 +1,9 @@
-import {PolymerElement} from "@polymer/polymer/polymer-element"
+import {PolymerElement} from "@polymer/polymer"
 import template from "./cork-toggle-panel.html.js"
 
+import "@polymer/iron-icon"
+import "@polymer/iron-icons"
+import "@polymer/paper-button"
 
 export class CorkSearchBox extends PolymerElement {
   
