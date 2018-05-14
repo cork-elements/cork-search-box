@@ -1,0 +1,25 @@
+{
+  "name": "@ucd-lib/cork-search-box",
+  "version": "1.0.0",
+  "description": "Search box",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cork-elements/cork-search-box.git"
+  },
+  "author": "jrmerz@ucdavis.edu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cork-elements/cork-search-box/issues"
+  },
+  "homepage": "https://github.com/cork-elements/cork-search-box#readme",
+  "dependencies": {
+    "@polymer/iron-icon": "^3.0.0-pre.19",
+    "@polymer/iron-icons": "^3.0.0-pre.19",
+    "@polymer/paper-button": "^3.0.0-pre.19",
+    "@polymer/polymer": "^3.0.2"
+  }
+}
